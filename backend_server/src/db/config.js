@@ -10,6 +10,7 @@ const sequelize = new Sequelize(
     host: process.env.POSTGRES_HOST,
     dialect: 'postgres',
     logging: false,
+    // logging: console.log,
     isolationLevel: Transaction.ISOLATION_LEVELS.READ_COMMITTED,
     logging: console.log
   });

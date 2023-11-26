@@ -42,7 +42,7 @@ function getOptions(prices) {
 }
 
 export default function PricesChart({ prices }) {
-    console.log(prices)
+    
     return (
         <HighchartsReact
             containerProps={{ style: { width: "100%" } }}

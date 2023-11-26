@@ -2,7 +2,6 @@ import { Model, InferAttributes, InferCreationAttributes, CreationOptional, Data
 import {sequelize} from '../config.js';
 
 class SecurityModel extends Model<InferAttributes<SecurityModel>, InferCreationAttributes<SecurityModel>> {
-    // declare id: CreationOptional<number>;
     declare ticker: string;
     declare securityName: string;
     declare sector: string;
@@ -12,11 +11,6 @@ class SecurityModel extends Model<InferAttributes<SecurityModel>, InferCreationA
 
 SecurityModel.init(
     {
-        // id: {
-        //     type: DataTypes.INTEGER,
-        //     autoIncrement: true,
-        //     primaryKey: true
-        // },
         ticker: {
             type: DataTypes.STRING(128),
             allowNull: false,
@@ -40,11 +34,6 @@ SecurityModel.init(
     {
         tableName: 'Securities',
         timestamps: false, 
-        // indexes: [
-        //     {
-        //         fields: ['ticker']
-        //     }
-        // ],
         sequelize
     }
 );

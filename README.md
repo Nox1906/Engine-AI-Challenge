@@ -44,7 +44,9 @@ Create a React.js Single Page Application application with 2 screens:
 ![Alt text](Engine-AI-Challenge.png)
 
 ## Project Setup
-### Backend_Server
+### Backend_ServerTS (TypeScript) &  Backend_Server (JavaScript)
+
+Two versions were developed. One in node.js with TypeScript and another similar one with JavaScript.
 
 Before starting this project, you must configure the environment variables. Create a .env file with the variables:
 - POSTGRES_USER
