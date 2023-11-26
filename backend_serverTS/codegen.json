@@ -1,0 +1,19 @@
+{
+    "overwrite": true,
+    "schema": "./schema.graphql",
+    "generates": {
+        "src/generated/schema.ts": {
+            "plugins": [
+                "typescript",
+                "typescript-resolvers"
+            ],
+            "config": {
+                "mappers": {
+                    "Security": "../db/models/securities.js#SecurityModel",
+                    "Price": "../db/models/prices.js#PriceModel"
+                },
+                "skipTypename": true
+            }
+        }
+    }
+}

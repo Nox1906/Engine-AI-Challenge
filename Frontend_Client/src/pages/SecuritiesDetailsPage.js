@@ -26,6 +26,7 @@ function SecuritiesDetailsPage() {
   if (loading) {
     return (<Loading />)
   }
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box

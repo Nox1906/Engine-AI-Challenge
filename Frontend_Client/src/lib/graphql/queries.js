@@ -15,7 +15,6 @@ export const apolloClient = new ApolloClient({
 const getSecuritiesQuery = gql`
   query Securities {
     securities {
-      id
       ticker
       securityName
       sector
@@ -28,7 +27,6 @@ const getSecuritiesQuery = gql`
 const getSecurityDetailByTickerQuery = gql`
   query SecurityByTicker ($ticker: String! ){
     security(ticker: $ticker ) {
-      id
       ticker
       securityName
       sector

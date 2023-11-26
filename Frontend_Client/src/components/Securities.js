@@ -6,7 +6,6 @@ import Box from '@mui/material/Box';
 import { colors } from '@mui/material';
 
 const columns = [
-  { field: 'id', headerName: 'ID' },
   {
     field: 'ticker',
     headerName: 'Symbol',
@@ -76,11 +75,9 @@ export default function Securities({ securities }) {
     >
       <DataGrid
         slots={{ toolbar: CustomToolbar }}
-        columnVisibilityModel={{
-          id: false,
-        }}
         rows={securities}
         columns={columns}
+        getRowId={(row) => row.ticker}
         initialState={{
           pagination: {
             paginationModel: { page: 0, pageSize: 10 },
