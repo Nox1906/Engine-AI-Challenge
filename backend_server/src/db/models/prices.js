@@ -7,8 +7,8 @@ const Price = sq.define('Price', {
         allowNull: false,
         primaryKey: true,
     },
-    SecurityId: {
-        type: DataTypes.INTEGER,
+    ticker: {
+        type: DataTypes.STRING,
         primaryKey: true,
     },
     close: {
@@ -21,7 +21,7 @@ const Price = sq.define('Price', {
     timestamps: false, 
     indexes: [
         {
-            fields: ['SecurityId']
+            fields: ['ticker']
         }
     ]
 });

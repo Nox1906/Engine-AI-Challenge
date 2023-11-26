@@ -9,8 +9,7 @@ const initDB = async () => {
 
     await testDbConnection();
 
-    Security.hasMany(Price, { foreignKey: 'SecurityId' })
-    Price.belongsTo(Security, { foreignKey: 'SecurityId' })
+    Security.hasMany(Price, { sourceKey: 'ticker', foreignKey: 'ticker' })
 
     await Security.sync({ force: true })
     await Price.sync({ force: true })
@@ -34,7 +33,7 @@ const initDB = async () => {
                         date: priceData.date,
                         close: priceData.close,
                         volume: priceData.volume,
-                        SecurityId: newSecurity.id
+                        ticker: newSecurity.ticker
                     }, {transaction: t});
                 }));
             }));
@@ -60,32 +59,24 @@ const getAllPrices = async () => {
     return prices;
 }
 
-const getSecurityById = async (id) => {
-    const security = await Security.findByPk(id);
+const getSecurityByPk = async (ticker) => {
+    const security = await Security.findByPk(ticker);
     if (!security) {
-        throw notFoundError('No Security found with id: ' + id)
+        throw notFoundError('No Security found with ticker: ' + ticker)
     }
     return security;
 }
 
-const getPricesBySecurityId = async (securityId) => {
-    const prices = await Price.findAll({ where: { SecurityId: securityId }, order: [['date', 'ASC']]})
+const getPricesByTicker = async (securityTicker) => {
+    const prices = await Price.findAll({ where: { ticker: securityTicker }, order: [['date', 'ASC']]})
     return prices;
 }
 
-const getSecurityByTicker = async (securityTicker) => {
-    const security = await Security.findOne({ where: { ticker: securityTicker } })
-    if (!security) {
-        throw notFoundError('No Security found with symbol: ' + securityTicker)
-    }
-    return security;
-}
 
 export {
     initDB,
     getAllSecurities , 
     getAllPrices,
-    getSecurityById,
-    getPricesBySecurityId,
-    getSecurityByTicker
+    getSecurityByPk,
+    getPricesByTicker
 }

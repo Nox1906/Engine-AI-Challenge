@@ -11,7 +11,6 @@ type Price {
 }
 
 type Security {
-  id: ID!
   ticker: String
   securityName: String
   sector: String

@@ -4,7 +4,8 @@ import { sq } from '../config.js'
 const Security = sq.define('Security', {
     ticker: {
         type: DataTypes.TEXT,
-        allowNull: false
+        allowNull: false,
+        primaryKey: true
     }, 
     securityName: {
         type: DataTypes.TEXT,
@@ -22,11 +23,6 @@ const Security = sq.define('Security', {
     }
 },{
     timestamps: false, 
-    indexes: [
-        {
-            fields: ['ticker']
-        }
-    ]
 });
 
 export {

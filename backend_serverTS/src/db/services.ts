@@ -54,7 +54,6 @@ function notFoundError(message: string) {
 
 const getAllSecurities = async () => {
     const securities = await SecurityModel.findAll();
-    
     return securities;
 }
 
@@ -67,19 +66,19 @@ const getPricesByTicker = async (securityTicker: string) => {
     const prices = await PriceModel.findAll({ where: { ticker: securityTicker }, order: [['date', 'ASC']]})
     return prices;
 }
-
-const getSecurityByTicker = async (securityTicker: string) => {
-    const security = await SecurityModel.findOne({ where: { ticker: securityTicker } })
+const getSecurityByPk = async (ticker: string) => {
+    const security = await SecurityModel.findByPk(ticker);
     if (!security) {
-        throw notFoundError('No Security found with symbol: ' + securityTicker)
+        throw notFoundError('No Security found with ticker: ' + ticker)
     }
     return security;
 }
+
 
 export {
     initDB,
     getAllSecurities , 
     getAllPrices,
     getPricesByTicker ,
-    getSecurityByTicker
+    getSecurityByPk
 }
