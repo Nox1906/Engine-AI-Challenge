@@ -1,0 +1,21 @@
+type Query {
+    securities: [Security!]!
+    security(ticker: String! ): Security 
+}
+
+# Adicionar exclamação indica que não é null
+type Price {
+  date: String
+  close: String
+  volume: String
+}
+
+type Security {
+  id: ID!
+  ticker: String
+  securityName: String
+  sector: String
+  country: String
+  trend: Float
+  prices: [Price]
+}
